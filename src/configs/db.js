@@ -1,3 +1,4 @@
+require('dotenv').config()
 const mysql = require('mysql')
 let connection = mysql.createConnection({
     database: process.env.DB_NAME,
@@ -12,6 +13,7 @@ connection.connect((err) => {
         console.log('success');
     }
 })
+
 
 function handleDisconnect() {
     connection = mysql.createConnection({
