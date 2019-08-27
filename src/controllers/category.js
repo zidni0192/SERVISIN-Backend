@@ -27,7 +27,6 @@ module.exports = {
     addCategory: (req, res) => {
         const data = {
             catName: req.body.catName,
-            idSub: req.body.idSub,
             image: null
         }
         categoryModel.addCategory(data)
