@@ -7,7 +7,8 @@ const logger = require('morgan')
 const app = express()
 const port = process.env.SERVER_PORT || 3333
 
-
+const userRoutes = require('./src/routes/user')
+const mitraRoutes = require('./src/routes/mitra')
 
 const whitelist = process.env.WHITELIST
 
@@ -31,8 +32,10 @@ app.use(xssFilter())
 app.use(logger('dev'))
 
 app.listen(port, () => {
-  console.log(`\n App ini berjalan di port/ App listening on port ${port} \n `)
+  console.log(`\n We are running in port ${port} \n `)
 })
 
 app.use(bodyParser.json()) // Body parse json
 app.use(bodyParser.urlencoded({ extended: false })) // body type
+app.use('/user',userRoutes)
+app.use('/mitra',mitraRoutes)
