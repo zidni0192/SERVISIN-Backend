@@ -8,6 +8,7 @@ const app = express()
 const port = process.env.SERVER_PORT || 3333
 
 const userRoutes = require('./src/routes/user')
+const categoryRoutes = require('./src/routes/category')
 const subCategoryRoutes = require('./src/routes/subCategory')
 const mitraRoutes = require('./src/routes/mitra')
 
@@ -40,4 +41,5 @@ app.use(bodyParser.json()) // Body parse json
 app.use(bodyParser.urlencoded({ extended: false })) // body type
 app.use('/user', userRoutes)
 app.use('/mitra', mitraRoutes)
+app.use('/category', categoryRoutes)
 app.use('/subCategory', subCategoryRoutes)

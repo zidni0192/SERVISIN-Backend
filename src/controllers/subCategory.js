@@ -14,10 +14,10 @@ module.exports = {
             })
     },
     getSubCategoryById: (req, res) => {
-        const idSub = req.params.idSub
-        subCategoryModel.getSubCategoryById(idSub)
+        const idCat = req.params.idCat
+        subCategoryModel.getSubCategoryById(idCat)
             .then((resultData) => {
-                const result = resultData[0]
+                const result = resultData
                 miscHelpers.response(res, result)
             })
             .catch((error) => {

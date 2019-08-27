@@ -13,9 +13,9 @@ module.exports = {
         })
     },
 
-    getSubCategoryById: (idSub) => {
+    getSubCategoryById: (idCat) => {
         return new Promise((resolve, reject) => {
-            conn.query(`SELECT * FROM tb_subCategory WHERE idSub = ?`, idSub, (err, result) => {
+            conn.query(`SELECT * FROM tb_subCategory WHERE idCategory = ?`, idCat, (err, result) => {
                 if (!err) {
                     resolve(result)
                 } else {
