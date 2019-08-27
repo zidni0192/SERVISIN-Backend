@@ -1,6 +1,7 @@
 const models = require('../models/mitra')
 const helper = require('../helpers/helper')
 const jwt = require('jsonwebtoken')
+const cloudinary = require('cloudinary')
 module.exports = {
     RegMitra: (req, res) => {
         const date = new Date()
@@ -53,5 +54,34 @@ module.exports = {
             .catch((error) => {
                 console.log(error)
             })
-    }
+    },
+    upfotoMitra: async (req, res) => {
+        const path = req.file.path
+        const idMitra = req.params.idMitra
+        const getUrl = async req => {
+            cloudinary.config({
+                cloud_name: 'servisin',
+                api_key: '454757499247786',
+                api_secret: 'v2UeReaJtviKoYUS8UE82TmCL_s'    
+            })
+      
+            let dataimg
+            await cloudinary.uploader.upload(path, result => {
+              console.log('coba ini', path)
+              // const fs = require('fs')
+              // fs.unlink(path)
+              dataimg = result.url
+            })
+            return dataimg
+          }
+          const img  = await getUrl()
+          models
+          .upfotoMitra(idMitra, img)
+          .then((result) => {
+            res.json(img)
+        })
+        .catch((error) => {
+            res.json(error)
+        })
+    },
 }

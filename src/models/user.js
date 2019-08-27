@@ -23,5 +23,18 @@ module.exports = {
                 }
             })
         })
+    },
+    
+    upfotoUser:(img, idUser) => {
+        return new Promise((resolve, reject)=>{
+            connection.query('UPDATE tb_user SET image = ? WHERE idUser =?' , [idUser, img], (err,result)=>{
+                if (!err) {
+                    resolve(result)
+                } else {
+                    reject(err)
+                }
+            })
+        })
     }
+    
 }
