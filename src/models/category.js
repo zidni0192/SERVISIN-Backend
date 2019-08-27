@@ -12,9 +12,9 @@ module.exports = {
             })
         })
     },
-    getByIdCategory: (idSub) => {
+    getByIdCategory: (idCategory) => {
         return new Promise((resolve, reject) => {
-            conn.query(`SELECT tb_Category.idCategory, tb_Category.catName, tb_subCategory.subName, tb_subCategory.price FROM tb_Category INNER JOIN tb_subCategory ON tb_Category.idSub = tb_subCategory.idSub WHERE idSub = ?`, idSub, (err, result) => {
+            conn.query(`SELECT tb_Category.idCategory, tb_Category.catName, tb_subCategory.subName, tb_subCategory.price FROM tb_Category INNER JOIN tb_subCategory ON tb_Category.idSub = tb_subCategory.idSub WHERE idCategory = ?`, idCategory, (err, result) => {
                 if (!err) {
                     resolve(result)
                 } else {
@@ -34,9 +34,9 @@ module.exports = {
             })
         })
     },
-    deleteCategory: (idSub) => {
+    deleteCategory: (idCategory) => {
         return new Promise((resolve, reject) => {
-            conn.query(`DELETE FROM tb_Category WHERE idSub = ?`, idSub, (err, result) => {
+            conn.query(`DELETE FROM tb_Category WHERE idCategory = ?`, idCategory, (err, result) => {
                 if (!err) {
                     resolve(result)
                 } else {
@@ -45,9 +45,9 @@ module.exports = {
             })
         })
     },
-    updateCategory: (idSub, data) => {
+    updateCategory: (idCategory, data) => {
         return new Promise((resolve, reject) => {
-            conn.query(`UPDATE SET ? FROM tb_Category WHERE idSub = ?`, [data, idSub], (err, result) => {
+            conn.query(`UPDATE SET ? FROM tb_Category WHERE idCategory = ?`, [data, idCategory], (err, result) => {
                 if (!err) {
                     resolve(result)
                 } else {
