@@ -28,7 +28,8 @@ module.exports = {
     addSubCategory: (req, res) => {
         const data = {
             subName: req.body.subName,
-            price: req.body.price
+            price: req.body.price,
+            image: null
         }
         subCategoryModel.addSubCategory(data)
             .then(() => {
@@ -55,7 +56,8 @@ module.exports = {
         const idSub = req.params.idSub
         const data = {
             subName: req.body.subName,
-            price: req.body.price
+            price: req.body.price,
+            image: null
         }
         subCategoryModel.updateSubCategory(idSub, data)
             .then(() => {
