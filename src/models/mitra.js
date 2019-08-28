@@ -25,7 +25,7 @@ module.exports = {
     },
     getMitraByid: (idMitra) => {
         return new Promise((resolve, reject) => {
-            connection.query('SELECT * FROM tb_mitra INNER JOIN tb_Category ON tb_mitra.idCategory = tb_Category.idCategory INNER JOIN tb_subCategory ON tb_subCategory.idCategory = tb_Category.idCategory  WHERE idMitra=?', idMitra, (err, result) => {
+            connection.query('SELECT tb_mitra.idMitra, tb_mitra.idSubCat, tb_mitra.email, tb_mitra.nohp,tb_mitra.lat,tb_mitra.long,tb_mitra.image AS imageMitra, tb_mitra.password, tb_mitra.salt, tb_mitra.role, tb_subCategory.idSubCat, tb_subCategory.idCategory, tb_subCategory.subName, tb_subCategory.price, tb_subCategory.image AS imageSub    FROM tb_mitra INNER JOIN tb_subCategory ON tb_mitra.idSubCat = tb_subCategory.idSubCat  WHERE idMitra=?', idMitra, (err, result) => {
                 console.log(idMitra);
                 
                 if (!err) {
@@ -38,7 +38,7 @@ module.exports = {
     },
     getMitraByCat: (idMitra) => {
         return new Promise((resolve, reject) => {
-            connection.query('SELECT * FROM tb_mitra INNER JOIN tb_Category ON tb_mitra.idSubCat = tb_Category.idCategory INNER JOIN tb_subCategory ON tb_subCategory.idCategory = tb_Category.idCategory WHERE tb_subCategory.idSubCat=?', idMitra, (err, result) => {
+            connection.query('SELECT * FROM tb_mitra INNER JOIN tb_subCategory ON tb_mitra.idSubCat = tb_subCategory.idSubCat WHERE tb_subCategory.idSubCat=?', idMitra, (err, result) => {
                 console.log(idMitra);
                 
                 if (!err) {
@@ -51,7 +51,7 @@ module.exports = {
     },
     getMitraALL: () => {
         return new Promise((resolve, reject) => {
-            connection.query('SELECT * FROM tb_mitra INNER JOIN tb_Category ON tb_mitra.idSubCat = tb_Category.idCategory INNER JOIN tb_subCategory ON tb_subCategory.idCategory = tb_Category.idCategory ', (err, result) => {
+            connection.query('SELECT * FROM tb_mitra INNER JOIN tb_subCategory ON tb_mitra.idSubCat = tb_subCategory.idSubCat ', (err, result) => {
                 // console.log(idMitra);
                 
                 if (!err) {
