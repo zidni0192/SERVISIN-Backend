@@ -11,7 +11,7 @@ module.exports = {
         const data = {
             idMitra: idMitra,
             fullname: req.body.fullname,
-            idCategory: req.body.idCategory,
+            idSubCat: req.body.idSubCat,
             email: req.body.email,
             nohp: req.body.nohp,
             lat: req.body.lat,
@@ -21,6 +21,7 @@ module.exports = {
             salt: salt,
             role: 'mitra',
         }
+        console.log(data)
         models.RegMitra(data)
             .then((result) => {
                 res.json(data)
@@ -104,6 +105,7 @@ module.exports = {
             return dataimg
           }
           const img  = await getUrl()
+          console.log('coba xx', img, 'idi', idMitra)
           models
           .upfotoMitra(idMitra, img)
           .then((result) => {
