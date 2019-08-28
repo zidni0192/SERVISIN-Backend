@@ -64,7 +64,7 @@ module.exports = {
     },
     upfotoMitra:(img, idMitra) => {
         return new Promise((resolve, reject)=>{
-            connection.query('UPDATE tb_mitra SET image = ? WHERE idMitra=?' , [idMitra, img], (err,result)=>{
+            connection.query('UPDATE tb_mitra SET image = ? WHERE idMitra= ?' , [img,idMitra], (err,result)=>{
                 if (!err) {
                     resolve(result)
                 } else {
