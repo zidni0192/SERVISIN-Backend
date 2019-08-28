@@ -1,6 +1,7 @@
 const models = require('../models/mitra')
 const helper = require('../helpers/helper')
 const jwt = require('jsonwebtoken')
+const cloudinary = require('cloudinary')
 module.exports = {
     RegMitra: (req, res) => {
         const date = new Date()
@@ -53,5 +54,94 @@ module.exports = {
             .catch((error) => {
                 console.log(error)
             })
+    },
+    getMitraByid: (req, res) => {
+        const idMitra = req.params.idMitra
+        models.getMitraByid(idMitra)
+          .then((result) => {
+            helper.response(res, result)
+          })
+          .catch((error) => {
+            res.json(error)
+        })
+      },
+      getMitraBycat: (req, res) => {
+        const idCategory = req.params.idCategory
+        models.getMitraByCat(idCategory)
+          .then((result) => {
+            helper.response(res, result)
+          })
+          .catch((error) => {
+            res.json(error)
+        })
+      },
+      getMitraALL: (req, res) => {
+        models.getMitraALL()
+          .then((result) => {
+            helper.response(res, result)
+          })
+          .catch((error) => {
+            res.json(error)
+        })
+      },
+    upfotoMitra: async (req, res) => {
+        const path = req.file.path
+        const idMitra = req.params.idMitra
+        const getUrl = async req => {
+            cloudinary.config({
+                cloud_name: 'servisin',
+                api_key: '454757499247786',
+                api_secret: 'v2UeReaJtviKoYUS8UE82TmCL_s'    
+            })
+      
+            let dataimg
+            await cloudinary.uploader.upload(path, result => {
+              console.log('coba ini', path)
+              // const fs = require('fs')
+              // fs.unlink(path)
+              dataimg = result.url
+            })
+            return dataimg
+          }
+          const img  = await getUrl()
+          models
+          .upfotoMitra(idMitra, img)
+          .then((result) => {
+            res.json(img)
+        })
+        .catch((error) => {
+            res.json(error)
+        })
+    },
+    upLatLongMitra: (req, res) => {
+        const idMitra = req.params.idMitra
+        const data  = {
+            long :  req.body.long,
+            lat  : req.body.lat
+        }
+        models.upLatLongMitra(data, idMitra).then((result)=>{
+            helper.response(res, result)
+        }).catch((error) => {
+            res.json(error)
+        })
+    },
+    updataMitra: (req, res) => {
+        const idMitra = req.params.idMitra
+        const salt = helper.generateSalt()
+        const password = helper.setPassword(req.body.password, salt)
+        const data = {
+            fullname: req.body.fullname,
+            idCategory: req.body.idCategory,
+            email: req.body.email,
+            nohp: req.body.nohp,
+            password: password.passwordHash,
+            salt: salt,
+            role: 'mitra',
+        }
+        models.updataMitra(data, idMitra).then((result)=>{
+            helper.response(res, result)
+        }).catch((error) => {
+            res.json(error)
+        })
     }
 }
