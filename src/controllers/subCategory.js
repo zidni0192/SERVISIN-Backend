@@ -17,7 +17,7 @@ module.exports = {
         const idSub = req.params.idSub
         subCategoryModel.getSubCategoryById(idSub)
             .then((resultData) => {
-                const result = resultData[0]
+                const result = resultData
                 miscHelpers.response(res, result)
             })
             .catch((error) => {

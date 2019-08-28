@@ -54,6 +54,17 @@ module.exports = {
                 console.log(error)
             })
     },
+    getUserByid: (req, res) => {
+        const idUser = req.params.idUser
+        models.getUserByid(idUser)
+          .then((resultBook) => {
+            const result = resultBook
+            helper.response(res, result)
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      },
     upfotoUser: async (req, res) => {
         const path = req.file.path
         const idUser = req.params.idUser
@@ -83,5 +94,16 @@ module.exports = {
             res.json(error)
         })
     },
-
+    upLatLongUser: (req, res) => {
+        const idUser = req.params.idUser
+        const data  = {
+            long :  req.body.long,
+            lat  : req.body.lat
+        }
+        models.upLatLongUser(data, idUser).then((result)=>{
+            helper.response(res, result)
+        }).catch((error) => {
+            res.json(error)
+        })
+    }
 }

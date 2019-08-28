@@ -10,6 +10,7 @@ const port = process.env.SERVER_PORT || 3333
 const userRoutes = require('./src/routes/user')
 const subCategoryRoutes = require('./src/routes/subCategory')
 const mitraRoutes = require('./src/routes/mitra')
+const categoryRoutes = require('./src/routes/category')
 
 const whitelist = process.env.WHITELIST
 
@@ -41,3 +42,4 @@ app.use(bodyParser.urlencoded({ extended: false })) // body type
 app.use('/user', userRoutes)
 app.use('/mitra', mitraRoutes)
 app.use('/subCategory', subCategoryRoutes)
+app.use('/category', categoryRoutes)

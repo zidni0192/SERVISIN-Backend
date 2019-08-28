@@ -3,7 +3,7 @@ const conn = require('../configs/db')
 module.exports = {
     getSubCategory: () => {
         return new Promise((resolve, reject) => {
-            conn.query(`SELECT * FROM tb_subCategory`, (err, result) => {
+            conn.query(`SELECT * FROM tb_subCategory WHERE idSub = ?`, (err, result) => {
                 if (!err) {
                     resolve(result)
                 } else {
@@ -15,7 +15,7 @@ module.exports = {
 
     getSubCategoryById: (idSub) => {
         return new Promise((resolve, reject) => {
-            conn.query(`SELECT * FROM tb_subCategory WHERE idSub = ?`, idSub, (err, result) => {
+            conn.query(`SELECT * FROM tb_subCategory WHERE idCategory = ?`, idSub, (err, result) => {
                 if (!err) {
                     resolve(result)
                 } else {

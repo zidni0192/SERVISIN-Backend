@@ -15,7 +15,8 @@ const storage = multer.diskStorage({
   
 Route
 .post('/register',controller.postUser)
+.get('/:idUser', controller.getUserByid)
 .post('/login',controller.getByEmail)
 .patch('/:idUser', upload.single('image'), controller.upfotoUser)
-
+.patch('/posision/:idUser', controller.upLatLongUser)
 module.exports = Route
