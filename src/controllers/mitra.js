@@ -58,8 +58,26 @@ module.exports = {
     getMitraByid: (req, res) => {
         const idMitra = req.params.idMitra
         models.getMitraByid(idMitra)
-          .then((resultBook) => {
-            const result = resultBook
+          .then((result) => {
+            helper.response(res, result)
+          })
+          .catch((error) => {
+            res.json(error)
+        })
+      },
+      getMitraBycat: (req, res) => {
+        const idCategory = req.params.idCategory
+        models.getMitraBycat(idCategory)
+          .then((result) => {
+            helper.response(res, result)
+          })
+          .catch((error) => {
+            res.json(error)
+        })
+      },
+      getMitraALL: (req, res) => {
+        models.getMitraALL()
+          .then((result) => {
             helper.response(res, result)
           })
           .catch((error) => {
