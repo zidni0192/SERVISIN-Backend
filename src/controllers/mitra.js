@@ -124,5 +124,24 @@ module.exports = {
         }).catch((error) => {
             res.json(error)
         })
+    },
+    updataMitra: (req, res) => {
+        const idMitra = req.params.idMitra
+        const salt = helper.generateSalt()
+        const password = helper.setPassword(req.body.password, salt)
+        const data = {
+            fullname: req.body.fullname,
+            idCategory: req.body.idCategory,
+            email: req.body.email,
+            nohp: req.body.nohp,
+            password: password.passwordHash,
+            salt: salt,
+            role: 'mitra',
+        }
+        models.updataMitra(data, idMitra).then((result)=>{
+            helper.response(res, result)
+        }).catch((error) => {
+            res.json(error)
+        })
     }
 }

@@ -83,5 +83,16 @@ module.exports = {
                 }
             })
         })
+    },
+    updataMitra:(data, idMitra) => {
+        return new Promise((resolve, reject)=>{
+            connection.query('UPDATE tb_mitra SET ? WHERE idMitra =?' , [data, idMitra], (err,result)=>{
+                if (!err) {
+                    resolve(result)
+                } else {
+                    reject(err)
+                }
+            })
+        })
     }
 }

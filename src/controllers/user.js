@@ -105,5 +105,23 @@ module.exports = {
         }).catch((error) => {
             res.json(error)
         })
+    },
+    updataUser: (req, res) => {
+        const idUser = req.params.idUser
+        const salt = helper.generateSalt()
+        const password = helper.setPassword(req.body.password, salt)
+        const data = {
+            fullname: req.body.fullname,
+            email: req.body.email,
+            nohp: req.body.nohp,
+            password: password.passwordHash,
+            salt: salt,
+            role: 'user',
+        }
+        models.updataUser(data, idUser).then((result)=>{
+            helper.response(res, result)
+        }).catch((error) => {
+            res.json(error)
+        })
     }
 }

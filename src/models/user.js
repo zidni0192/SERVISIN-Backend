@@ -59,6 +59,17 @@ module.exports = {
                 }
             })
         })
+    },
+    updataUser:(data, idUser) => {
+        return new Promise((resolve, reject)=>{
+            connection.query('UPDATE tb_user SET ? WHERE idUser =?' , [ data, idUser], (err,result)=>{
+                if (!err) {
+                    resolve(result)
+                } else {
+                    reject(err)
+                }
+            })
+        })
     }
     
 }
