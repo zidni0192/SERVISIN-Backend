@@ -25,7 +25,7 @@ module.exports = {
     },
     getMitraByid: (idMitra) => {
         return new Promise((resolve, reject) => {
-            connection.query('SELECT * FROM tb_mitra WHERE idMitra=?', idMitra, (err, result) => {
+            connection.query('SELECT * FROM tb_mitra INNER JOIN tb_Category ON tb_mitra.idCategory = tb_Category.idCategory INNER JOIN tb_subCategory ON tb_subCategory.idCategory = tb_Category.idCategory  WHERE idMitra=?', idMitra, (err, result) => {
                 console.log(idMitra);
                 
                 if (!err) {
