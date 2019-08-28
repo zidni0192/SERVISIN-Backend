@@ -23,9 +23,33 @@ module.exports = {
             })
         })
     },
+    getMitraByid: (idMitra) => {
+        return new Promise((resolve, reject) => {
+            connection.query('SELECT * FROM tb_mitra WHERE idMitra=?', idMitra, (err, result) => {
+                console.log(idMitra);
+                
+                if (!err) {
+                    resolve(result)
+                } else {
+                    reject(err)
+                }
+            })
+        })
+    },
     upfotoMitra:(img, idMitra) => {
         return new Promise((resolve, reject)=>{
             connection.query('UPDATE tb_mitra SET image = ? WHERE idMitra=?' , [idMitra, img], (err,result)=>{
+                if (!err) {
+                    resolve(result)
+                } else {
+                    reject(err)
+                }
+            })
+        })
+    },
+    upLatLongMitra:(data, idMitra) => {
+        return new Promise((resolve, reject)=>{
+            connection.query('UPDATE tb_mitra SET ? WHERE idMitra =?' , [data, idMitra], (err,result)=>{
                 if (!err) {
                     resolve(result)
                 } else {

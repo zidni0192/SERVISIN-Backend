@@ -55,6 +55,17 @@ module.exports = {
                 console.log(error)
             })
     },
+    getMitraByid: (req, res) => {
+        const idMitra = req.params.idMitra
+        models.getMitraByid(idMitra)
+          .then((resultBook) => {
+            const result = resultBook
+            helper.response(res, result)
+          })
+          .catch((error) => {
+            res.json(error)
+        })
+      },
     upfotoMitra: async (req, res) => {
         const path = req.file.path
         const idMitra = req.params.idMitra
@@ -84,4 +95,16 @@ module.exports = {
             res.json(error)
         })
     },
+    upLatLongMitra: (req, res) => {
+        const idMitra = req.params.idMitra
+        const data  = {
+            long :  req.body.long,
+            lat  : req.body.lat
+        }
+        models.upLatLongMitra(data, idMitra).then((result)=>{
+            helper.response(res, result)
+        }).catch((error) => {
+            res.json(error)
+        })
+    }
 }
