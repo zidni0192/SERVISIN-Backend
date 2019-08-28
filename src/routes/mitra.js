@@ -19,7 +19,8 @@ Route
 .get('/category/:idCategory', controller.getMitraBycat)
 .post('/register',controller.RegMitra)
 .post('/login',controller.getByEmail)
-.patch('/:idMitra', upload.single('image'), controller.upfotoMitra)
+.patch('/image/:idMitra', upload.single('image'), controller.upfotoMitra)
+.patch('/:idMitra', controller.updataMitra)
 .patch('/posision/:idMitra', controller.upLatLongMitra)
 
 module.exports = Route
