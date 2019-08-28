@@ -6,18 +6,18 @@ module.exports = {
     postUser: (req, res) => {
         const date = new Date()
         const idUser = 'USER-' + date.getFullYear() + (date.getMonth() + 1) + date.getDate() + date.getHours() + date.getMinutes() + date.getSeconds();
-        const salt = helper.generateSalt()
-        const password = helper.setPassword(req.body.password, salt)
+        const salt = helper.generateSalt(18)
+        const passwordHash = helper.setPassword(req.body.password, salt)
         const data = {
             idUser: idUser,
             fullname: req.body.fullname,
-            lat: req.body.lat,
-            long: req.body.long,
+            lat: 0,
+            long: 0,
             email: req.body.email,
-            password: password.passwordHash,
+            password: passwordHash.passwordHash,
             noHp: req.body.noHp,
             role: 'user',
-            salt: salt,
+            salt: passwordHash.salt,
             image: 'https://res.cloudinary.com/dbhwvh1mf/image/upload/v1566321024/img/blank-profile-picture-973460_960_720_wolhdp.png'
         }
         models.postUser(data)
