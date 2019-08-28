@@ -14,7 +14,9 @@ const storage = multer.diskStorage({
   let upload = multer({ storage: storage }); 
   
 Route
+.get('/', controller.getMitraALL)
 .get('/:idMitra', controller.getMitraByid)
+.get('/category/:idMitra', controller.getMitraBycat)
 .post('/register',controller.RegMitra)
 .post('/login',controller.getByEmail)
 .patch('/:idMitra', upload.single('image'), controller.upfotoMitra)
