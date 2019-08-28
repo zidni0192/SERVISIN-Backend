@@ -38,7 +38,7 @@ module.exports = {
     },
     getMitraByCat: (idMitra) => {
         return new Promise((resolve, reject) => {
-            connection.query('SELECT * FROM tb_mitra INNER JOIN tb_Category ON tb_mitra.idCategory = tb_Category.idCategory INNER JOIN tb_subCategory ON tb_subCategory.idCategory = tb_Category.idCategory WHERE tb_Category.idCategory=?', idMitra, (err, result) => {
+            connection.query('SELECT * FROM tb_mitra INNER JOIN tb_Category ON tb_mitra.idCategory = tb_Category.idCategory INNER JOIN tb_subCategory ON tb_subCategory.idCategory = tb_Category.idCategory WHERE tb_subCategory.idSubCat=?', idMitra, (err, result) => {
                 console.log(idMitra);
                 
                 if (!err) {
