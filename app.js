@@ -11,6 +11,7 @@ const userRoutes = require('./src/routes/user')
 const categoryRoutes = require('./src/routes/category')
 const subCategoryRoutes = require('./src/routes/subCategory')
 const mitraRoutes = require('./src/routes/mitra')
+const orderRoutes = require('./src/routes/order')
 
 const whitelist = process.env.WHITELIST
 
@@ -44,3 +45,4 @@ app.use('/mitra', mitraRoutes)
 app.use('/category', categoryRoutes)
 app.use('/subCategory', subCategoryRoutes)
 app.use('/category', categoryRoutes)
+app.use('/order', orderRoutes)
