@@ -5,7 +5,7 @@ Route
     .get('/byidmitra/:idMitra', controller.getOrderIdMitra)
     .get('/selesai/', controller.getOrderSelesai)
     .get('/pending/', controller.getOrderPending)
-    // .get('/:idCategory', controller.getCategoryById)
+    .get('/detail/:idOrder', controller.getOrderIdDetail)
     .post('/', controller.addOrder)
     // .delete('/:idCategory', controller.deleteCategory)
     // .patch('/:idCategory', controller.updateCategory)
