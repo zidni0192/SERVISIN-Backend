@@ -12,6 +12,17 @@ module.exports = {
             console.log(error)
           })
     },
+    getOrderIdDetail: (req, res) => {
+        const idMitra = req.params.idMitra
+        const idOrder = req.params.idOrder
+        models.getOrderIdDetail(idOrder, idMitra)
+          .then((result) => {
+            helper.response(res, result)
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+    },
     getOrderPending: (req, res) => {
         models.getOrderPending()
           .then((result) => {
