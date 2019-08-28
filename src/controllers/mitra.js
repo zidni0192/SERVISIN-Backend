@@ -67,7 +67,7 @@ module.exports = {
       },
       getMitraBycat: (req, res) => {
         const idCategory = req.params.idCategory
-        models.getMitraBycat(idCategory)
+        models.getMitraByCat(idCategory)
           .then((result) => {
             helper.response(res, result)
           })
