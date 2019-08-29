@@ -21,6 +21,7 @@ Route
 .post('/login',controller.getByEmail)
 .patch('/image/:idMitra', upload.single('image'), controller.upfotoMitra)
 .patch('/:idMitra', controller.updataMitra)
+.patch('/idphone/:idMitra', controller.upIDPhoneMitra)
 .patch('/posision/:idMitra', controller.upLatLongMitra)
 
 module.exports = Route

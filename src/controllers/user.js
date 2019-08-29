@@ -124,6 +124,15 @@ module.exports = {
             res.json(error)
         })
     },
+    upIDPhoneUser: (req, res) => {
+        const idUser = req.params.idUser   
+        const data = req.body.IDPhone
+        models.upIDPhoneUser(data, idUser).then((result)=>{
+            helper.response(res, result)
+        }).catch((error) => {
+            res.json(error)
+        })
+    },
     getUserALL: (req, res) => {
         models.getUserALL()
           .then((result) => {

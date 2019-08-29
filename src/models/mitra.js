@@ -95,9 +95,9 @@ module.exports = {
             })
         })
     },
-    upIdPonselMitra:(data, idMitra) => {
+    upIDPhoneMitra:(data, idMitra) => {
         return new Promise((resolve, reject)=>{
-            connection.query('UPDATE tb_mitra SET ? WHERE idMitra =?' , [data, idMitra], (err,result)=>{
+            connection.query('UPDATE tb_mitra SET IDponselMitra=? WHERE idMitra =?' , [data, idMitra], (err,result)=>{
                 if (!err) {
                     resolve(result)
                 } else {
