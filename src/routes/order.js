@@ -12,6 +12,7 @@ Route
     .get('/pending/', controller.getOrderPending)
     .get('/detail/:idOrder', controller.getOrderIdDetail)
     .post('/', controller.addOrder)
+    .post('/notif/', controller.notification)
     // .delete('/:idCategory', controller.deleteCategory)
     // .patch('/:idCategory', controller.updateCategory)
 
