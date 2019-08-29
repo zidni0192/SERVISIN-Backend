@@ -14,6 +14,7 @@ const storage = multer.diskStorage({
   let upload = multer({ storage: storage }); 
   
 Route
+.get('/', controller.getUserALL)
 .post('/register',controller.postUser)
 .get('/:idUser', controller.getUserByid)
 .post('/login',controller.getByEmail)
