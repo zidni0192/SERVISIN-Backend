@@ -11,7 +11,7 @@ module.exports = {
         const data = {
             idMitra: idMitra,
             fullname: req.body.fullname,
-            idCategory: req.body.idCategory,
+            idSubCat: req.body.idCategory,
             email: req.body.email,
             nohp: req.body.nohp,
             lat: req.body.lat,
@@ -104,6 +104,7 @@ module.exports = {
             return dataimg
           }
           const img  = await getUrl()
+          console.log('coba xx', img, 'idi', idMitra)
           models
           .upfotoMitra(idMitra, img)
           .then((result) => {
