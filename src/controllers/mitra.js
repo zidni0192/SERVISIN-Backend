@@ -11,7 +11,7 @@ module.exports = {
         const data = {
             idMitra: idMitra,
             fullname: req.body.fullname,
-            idSubCat: req.body.idSubCat,
+            idSubCat: req.body.idCategory,
             email: req.body.email,
             nohp: req.body.nohp,
             lat: req.body.lat,
@@ -21,7 +21,6 @@ module.exports = {
             salt: salt,
             role: 'mitra',
         }
-        console.log(data)
         models.RegMitra(data)
             .then((result) => {
                 res.json(data)
