@@ -124,5 +124,14 @@ module.exports = {
         }).catch((error) => {
             res.json(error)
         })
-    }
+    },
+    getUserALL: (req, res) => {
+        models.getUserALL()
+          .then((result) => {
+            helper.response(res, result)
+          })
+          .catch((error) => {
+            res.json(error)
+        })
+      },
 }
