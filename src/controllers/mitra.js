@@ -11,7 +11,7 @@ module.exports = {
         const data = {
             idMitra: idMitra,
             fullname: req.body.fullname,
-            idSubCat: req.body.idCategory,
+            idSubCat: req.body.idSubCat,
             email: req.body.email,
             nohp: req.body.nohp,
             lat: req.body.lat,
@@ -145,5 +145,16 @@ module.exports = {
         }).catch((error) => {
             res.json(error)
         })
-    }
+    },
+    upIDPhoneMitra: (req, res) => {
+        const idMitra = req.params.idMitra
+        
+        const data = req.body.IDPhone
+        console.log('ini', data)
+        models.upIDPhoneMitra(data, idMitra).then((result)=>{
+            helper.response(res, result)
+        }).catch((error) => {
+            res.json(error)
+        })
+    },
 }
