@@ -17,11 +17,13 @@ Route
 .get('/', controller.getMitraALL)
 .get('/:idMitra', controller.getMitraByid)
 .get('/category/:idCategory', controller.getMitraBycat)
-.post('/register',controller.RegMitra)
+.post('/register',controller.RegMitra)  
 .post('/login',controller.getByEmail)
 .patch('/image/:idMitra', upload.single('image'), controller.upfotoMitra)
 .patch('/:idMitra', controller.updataMitra)
 .patch('/idphone/:idMitra', controller.upIDPhoneMitra)
 .patch('/posision/:idMitra', controller.upLatLongMitra)
+.patch('/logout/:idMitra', controller.logout)
+
 
 module.exports = Route
