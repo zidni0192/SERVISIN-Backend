@@ -157,4 +157,15 @@ module.exports = {
             res.json(error)
         })
     },
+    logout: (req, res) => {
+        const idMitra = req.params.idMitra
+        const data = {
+            IDponselMitra:'dadada'
+        }
+        models.updataMitra(data, idMitra).then((result) => {
+            helper.response(res, result)
+        }).catch((error) => {
+            res.json(error)
+        })
+    }
 }

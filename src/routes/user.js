@@ -22,4 +22,5 @@ Route
 .patch('/:idUser', controller.updataUser)
 .patch('/idphone/:idUser', controller.upIDPhoneUser)
 .patch('/posision/:idUser', controller.upLatLongUser)
+.patch('/logout/:idUser',controller.logout)
 module.exports = Route
