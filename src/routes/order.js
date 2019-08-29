@@ -12,7 +12,7 @@ Route
     .get('/pending/', controller.getOrderPending)
     .get('/detail/:idOrder', controller.getOrderIdDetail)
     .post('/', controller.addOrder)
-    // .delete('/:idCategory', controller.deleteCategory)
-    // .patch('/:idCategory', controller.updateCategory)
+    // .delete('/:idCategory', controller.deleteOrder)
+    .patch('/:idOrder', controller.patchOrder)
 
 module.exports = Route
