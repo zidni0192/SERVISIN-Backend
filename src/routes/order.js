@@ -14,5 +14,6 @@ Route
     .post('/', controller.addOrder)
     // .delete('/:idCategory', controller.deleteOrder)
     .patch('/:idOrder', controller.patchOrder)
+    .post('/notif/', controller.notification)
 
 module.exports = Route
