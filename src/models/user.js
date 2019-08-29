@@ -70,6 +70,20 @@ module.exports = {
                 }
             })
         })
-    }
-    
+    },
+
+    getUserALL: () => {
+        return new Promise((resolve, reject) => {
+            connection.query('SELECT * FROM tb_user ', (err, result) => {
+                // console.log(idMitra);
+                
+                if (!err) {
+                    resolve(result)
+                } else {
+                    reject(err)
+                }
+            })
+        })
+    },
+
 }
