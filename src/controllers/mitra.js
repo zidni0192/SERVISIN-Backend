@@ -20,6 +20,7 @@ module.exports = {
             password: password.passwordHash,
             salt: salt,
             role: 'mitra',
+            IDponselMitra:req.body.IDponselMitra
         }
         models.RegMitra(data)
             .then((result) => {
