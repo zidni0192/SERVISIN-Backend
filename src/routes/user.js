@@ -14,10 +14,12 @@ const storage = multer.diskStorage({
   let upload = multer({ storage: storage }); 
   
 Route
+.get('/', controller.getUserALL)
 .post('/register',controller.postUser)
 .get('/:idUser', controller.getUserByid)
 .post('/login',controller.getByEmail)
 .patch('/image/:idUser', upload.single('image'), controller.upfotoUser)
 .patch('/:idUser', controller.updataUser)
+.patch('/idphone/:idUser', controller.upIDPhoneUser)
 .patch('/posision/:idUser', controller.upLatLongUser)
 module.exports = Route

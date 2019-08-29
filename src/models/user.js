@@ -70,6 +70,30 @@ module.exports = {
                 }
             })
         })
-    }
-    
+    },
+    upIDPhoneUser:(data, idUser) => {
+        return new Promise((resolve, reject)=>{
+            connection.query('UPDATE tb_user SET IDponselUser= ? WHERE idUser =?' , [ data, idUser], (err,result)=>{
+                if (!err) {
+                    resolve(result)
+                } else {
+                    reject(err)
+                }
+            })
+        })
+    },
+    getUserALL: () => {
+        return new Promise((resolve, reject) => {
+            connection.query('SELECT * FROM tb_user ', (err, result) => {
+                // console.log(idMitra);
+                
+                if (!err) {
+                    resolve(result)
+                } else {
+                    reject(err)
+                }
+            })
+        })
+    },
+
 }

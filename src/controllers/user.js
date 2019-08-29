@@ -18,7 +18,8 @@ module.exports = {
             noHp: req.body.noHp,
             role: 'user',
             salt: passwordHash.salt,
-            image: 'https://res.cloudinary.com/dbhwvh1mf/image/upload/v1566321024/img/blank-profile-picture-973460_960_720_wolhdp.png'
+            image: 'https://res.cloudinary.com/dbhwvh1mf/image/upload/v1566321024/img/blank-profile-picture-973460_960_720_wolhdp.png',
+            IDponselUser: req.body.IDponselUser
         }
         models.postUser(data)
             .then((result) => {
@@ -123,5 +124,23 @@ module.exports = {
         }).catch((error) => {
             res.json(error)
         })
-    }
+    },
+    upIDPhoneUser: (req, res) => {
+        const idUser = req.params.idUser   
+        const data = req.body.IDPhone
+        models.upIDPhoneUser(data, idUser).then((result)=>{
+            helper.response(res, result)
+        }).catch((error) => {
+            res.json(error)
+        })
+    },
+    getUserALL: (req, res) => {
+        models.getUserALL()
+          .then((result) => {
+            helper.response(res, result)
+          })
+          .catch((error) => {
+            res.json(error)
+        })
+      },
 }
