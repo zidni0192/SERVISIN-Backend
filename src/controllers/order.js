@@ -94,4 +94,50 @@ module.exports = {
         helper.response(res, '', 400, error)
       })
   },
+  notification : (req,res) =>{
+    let message_content = req.body.msg;
+    let phoneID = req.body.phoneid;
+    let header = req.body.header;
+
+    var sendNotification = function (data) {
+        var headers = {
+            "Content-Type": "application/json; charset=utf-8",
+            "Authorization": "Basic NmY3MDQwM2EtY2JjMC00YjQ3LWJhMDUtZTJhMzIxMGRiNzBj"
+        };
+
+        var options = {
+            host: "onesignal.com",
+            port: 443,
+            path: "/api/v1/notifications",
+            method: "POST",
+            headers: headers
+        };
+
+        var https = require('https');
+        var onesignalreq = https.request(options, function (res) {
+            res.on('data', function (data) {
+                console.log("Response:");
+                console.log(JSON.parse(data));
+            });
+        });
+
+        onesignalreq.on('error', function (e) {
+            console.log("ERROR:");
+            console.log(e);
+        });
+
+        onesignalreq.write(JSON.stringify(data));
+        onesignalreq.end();
+    };
+
+    var message = {
+        app_id: "d92c3fc2-9bf7-42bc-ba41-8f9587d65de6",
+        contents: { "en": `${message_content}` },
+        headings: {"en": `${header}`},
+        include_player_ids: [`${phoneID}`]
+    };
+
+    sendNotification(message);
+    res.status(200).send("Notification sended");
+}
 }
